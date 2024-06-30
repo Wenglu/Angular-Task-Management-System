@@ -83,22 +83,7 @@ The Task Management System Application is designed to enhance productivity and o
 - Displays detailed information about a selected task.
 - Shows a history log of all changes made to the task.
 - Includes icons and CSS styling for a professional and user-friendly appearance.
-
-### CSS Styling (`styles.css`)
-- **Global Styles**: Defines general styles for the application, including font, color schemes, and responsiveness.
-- **Component-Specific Styles**: Enhances the appearance of each component with unique and clean CSS, using icons and appropriate colors for buttons, priority levels, and task actions.
-
-### State Management (ngrx Store)
-- **Reducers**: Manage the application's state.
-- **Actions**: Define actions to modify the state.
-- **Effects**: Handle side effects such as asynchronous operations.
-
+- 
 ### Data Persistence
 - **Local Storage**: Ensures that task data is persisted across sessions, allowing users to retain their tasks even after refreshing the browser or closing the application.
-
-## Future Enhancements (will keep updating)
-
-- **User Authentication**: Implement user authentication to allow multiple users to manage their tasks independently.
-- **Notifications**: Add notification features to remind users of upcoming due dates or changes to tasks.
-- **API Integration**: Integrate with external APIs for more advanced features such as syncing tasks with calendar applications.
 
