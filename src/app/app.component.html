@@ -1,4 +1,15 @@
-<div class="container">
-  <app-header/>
-  <app-tasks/>
+<!-- src/app/app.component.html -->
+<div class="task-management-app">
+  <header>
+    <h1>{{ title }}</h1>
+    <button class="export-btn" (click)="exportTasks()">Export Tasks</button>
+  </header>
+  <main>
+    <section class="task-form-section">
+      <app-task-form [taskToEdit]="selectedTask" (taskUpdated)="onTaskUpdated()"></app-task-form>
+    </section>
+    <section class="task-list-section">
+      <app-task-list (editTask)="onEditTask($event)"></app-task-list>
+    </section>
+  </main>
 </div>

@@ -1,24 +1,84 @@
+// src/app/services/task.service.ts
 import { Injectable } from '@angular/core';
-import { Task } from '../Task';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+import { Task } from '../models/task.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskService {
-  // private apiUrl = "http://localhost:5000/tasks";
-  // Uncomment the following line and comment the above line if you want to use the mock API
-  private apiUrl = "http://localhost:5000/tasks";
+  private tasksSubject = new BehaviorSubject<Task[]>(this.loadTasks());
+  tasks$ = this.tasksSubject.asObservable();
 
-  constructor(private http: HttpClient) { }
+  private tasks: Task[] = [];
 
-  getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(this.apiUrl);
+  constructor() {}
+
+  private loadTasks(): Task[] {
+    const savedTasks = localStorage.getItem('tasks');
+    return savedTasks ? JSON.parse(savedTasks) : [];
   }
 
-  handleDelete(task: Task): Observable<Task> {
-    const url = `${this.apiUrl}/${task.id}`;
-    return this.http.delete<Task>(url);
+  private saveTasks(): void {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
+
+  addTask(task: Task): void {
+    this.tasks.push(task);
+    this.tasksSubject.next(this.tasks);
+    this.saveTasks();
+  }
+
+  updateTask(updatedTask: Task): void {
+    const index = this.tasks.findIndex(task => task.id === updatedTask.id);
+    if (index !== -1) {
+      this.tasks[index] = updatedTask;
+      this.tasksSubject.next(this.tasks);
+      this.saveTasks();
+    }
+  }
+
+  deleteTask(taskId: number): void {
+    this.tasks = this.tasks.filter(task => task.id !== taskId);
+    this.tasksSubject.next(this.tasks);
+    this.saveTasks();
+  }
+
+  getTasks(): Task[] {
+    return this.tasks;
+  }
+
+  exportTasksToCSV(): void {
+    const tasks = this.getTasks();
+    const csvData = tasks.map(task => ({
+      Title: task.title,
+      Description: task.description,
+      'Due Date': task.dueDate,
+      Priority: task.priority,
+      Status: task.status,
+      History: task.history.join(' | ')
+    }));
+
+    const csvContent = [
+      ['Title', 'Description', 'Due Date', 'Priority', 'Status', 'History'],
+      ...csvData.map(task => [
+        task.Title,
+        task.Description,
+        task['Due Date'],
+        task.Priority,
+        task.Status,
+        task.History
+      ])
+    ].map(e => e.join(',')).join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'tasks.csv');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 }

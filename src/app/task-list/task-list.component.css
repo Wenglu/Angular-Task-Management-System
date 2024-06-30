@@ -1,0 +1,130 @@
+/* src/app/task-list/task-list.component.css */
+
+.task-list {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+li:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task-info {
+  flex-grow: 1;
+}
+
+.task-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 0.3rem;
+}
+
+.task-details {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+.task-priority {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.priority-low { color: #27ae60; }
+.priority-medium { color: #f39c12; }
+.priority-high { color: #c0392b; }
+
+.task-status {
+  font-style: italic;
+}
+
+.status-to-do { color: #3498db; }
+.status-in-progress { color: #f39c12; }
+.status-completed { color: #27ae60; }
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.edit-button {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
+.edit-button:hover {
+  background-color: #2980b9;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .task-list {
+    padding: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-actions {
+    margin-top: 1rem;
+    align-self: flex-end;
+  }
+}

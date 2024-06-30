@@ -1,12 +1,32 @@
+// src/app/app.component.ts
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './components/header/header.component';
-import { TasksComponent } from './components/tasks/tasks.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { TaskFormComponent } from './task-form/task-form.component';
+import { TaskService } from './services/task.service';
+import { Task } from './models/task.model';
+
 @Component({
   selector: 'app-root',
-  standalone: true, // This indicates it's a standalone component
-  imports: [RouterOutlet, HeaderComponent, TasksComponent],
+  standalone: true,
+  imports: [TaskListComponent, TaskFormComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'task-management-system';
+  selectedTask?: Task;
+
+  constructor(private taskService: TaskService) {}
+
+  onEditTask(task: Task): void {
+    this.selectedTask = task;
+  }
+
+  onTaskUpdated(): void {
+    this.selectedTask = undefined;
+  }
+
+  exportTasks(): void {
+    this.taskService.exportTasksToCSV();
+  }
+}

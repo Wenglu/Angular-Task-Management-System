@@ -1,0 +1,165 @@
+/* src/app/app.component.css */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #ecf0f1;
+  --text-color: #34495e;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.task-management-app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+h1 {
+  color: white;
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.export-btn {
+  background-color: #27ae60;
+  color: rgb(247, 250, 245);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.export-btn:hover {
+  background-color: #27ae60;
+}
+
+main {
+  display: flex;
+  gap: 30px;
+}
+
+.task-form-section,
+.task-list-section {
+  flex: 1;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.task-form-section {
+  max-width: 400px;
+}
+
+.task-list-section {
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+  .task-form-section {
+    max-width: none;
+  }
+}
+
+/* Add these styles to your global styles.css or in the component-specific CSS files */
+
+app-task-form,
+app-task-list {
+  display: block;
+}
+
+/* Task Form Styles */
+app-task-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+app-task-form input,
+app-task-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+app-task-form button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+app-task-form button:hover {
+  background-color: #2980b9;
+}
+
+/* Task List Styles */
+app-task-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+app-task-list li {
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: transform 0.2s ease;
+}
+
+app-task-list li:hover {
+  transform: translateY(-2px);
+}
+
+app-task-list .task-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+app-task-list .task-description {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+app-task-list .task-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #888;
+}
