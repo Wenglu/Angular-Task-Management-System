@@ -1,4 +1,3 @@
-// src/app/app.component.ts
 import { Component } from '@angular/core';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskFormComponent } from './task-form/task-form.component';
@@ -13,7 +12,7 @@ import { Task } from './models/task.model';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'task-management-system';
+  title = 'Angular Task Management System';
   selectedTask?: Task;
 
   constructor(private taskService: TaskService) {}

@@ -1,4 +1,3 @@
-// src/app/task-form/task-form.component.ts
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -21,7 +20,7 @@ export class TaskFormComponent implements OnChanges {
       title: ['', Validators.required],
       description: [''],
       dueDate: [''],
-      priority: ['low', Validators.required],
+      priority: ['', Validators.required],  // Make priority required without default value
       status: ['to-do'],
     });
   }

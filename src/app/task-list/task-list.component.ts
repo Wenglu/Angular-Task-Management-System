@@ -1,4 +1,3 @@
-// src/app/task-list/task-list.component.ts
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';

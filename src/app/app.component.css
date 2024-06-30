@@ -1,16 +1,26 @@
-/* src/app/app.component.css */
+/* Importing Google Fonts for a sleek look */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
+
+/* Custom CSS Variables for easy theming */
 :root {
   --primary-color: #3498db;
   --secondary-color: #2ecc71;
-  --background-color: #ecf0f1;
+  --accent-color: #e74c3c;
+  --background-color: #f5f7fa;
   --text-color: #34495e;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --light-gray: #ecf0f1;
+  --white: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
+/* Global Styles */
 body {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
+  line-height: 1.6;
   margin: 0;
   padding: 0;
 }
@@ -18,148 +28,233 @@ body {
 .task-management-app {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 2rem;
 }
 
+/* Header Styles */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  background-color: var(--primary-color);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px var(--shadow-color);
+  margin-bottom: 2rem;
 }
 
 h1 {
-  color: white;
-  margin: 0;
   font-size: 2.5rem;
-  font-weight: 300;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  transition: var(--transition);
+}
+
+h1:hover {
+  text-shadow: 2px 2px 4px rgba(52, 152, 219, 0.3);
+  transform: translateY(-2px);
 }
 
 .export-btn {
-  background-color: #27ae60;
-  color: rgb(247, 250, 245);
+  background-color: var(--secondary-color);
+  color: var(--white);
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 500;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
 }
 
 .export-btn:hover {
   background-color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
+.export-btn::before {
+  content: '\f56e';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-right: 0.5rem;
+}
+
+/* Main Content Styles */
 main {
-  display: flex;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 
-.task-form-section,
-.task-list-section {
-  flex: 1;
-  background-color: white;
+/* Section Styles */
+section {
+  background-color: var(--white);
   border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px var(--shadow-color);
+  padding: 2rem;
+  box-shadow: var(--shadow);
 }
 
-.task-form-section {
-  max-width: 400px;
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
 }
 
-.task-list-section {
-  flex-grow: 1;
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-color);
+  transition: var(--transition);
 }
 
-@media (max-width: 768px) {
-  main {
-    flex-direction: column;
-  }
-
-  .task-form-section {
-    max-width: none;
-  }
-}
-
-/* Add these styles to your global styles.css or in the component-specific CSS files */
-
-app-task-form,
-app-task-list {
-  display: block;
+section:hover h2::after {
+  width: 100px;
 }
 
 /* Task Form Styles */
-app-task-form form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-app-task-form input,
-app-task-form select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-app-task-form button {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-app-task-form button:hover {
-  background-color: #2980b9;
+.task-form-section {
+  background-color: var(--light-gray);
 }
 
 /* Task List Styles */
-app-task-list ul {
-  list-style-type: none;
-  padding: 0;
+.task-list-section {
+  max-height: 600px;
+  overflow-y: auto;
 }
 
-app-task-list li {
-  background-color: #f9f9f9;
-  margin-bottom: 10px;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px var(--shadow-color);
-  transition: transform 0.2s ease;
+/* Custom Scrollbar */
+.task-list-section::-webkit-scrollbar {
+  width: 8px;
 }
 
-app-task-list li:hover {
-  transform: translateY(-2px);
+.task-list-section::-webkit-scrollbar-track {
+  background-color: var(--light-gray);
+  border-radius: 10px;
 }
 
-app-task-list .task-title {
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 5px;
+.task-list-section::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
 }
 
-app-task-list .task-description {
-  color: #666;
-  font-size: 0.9rem;
+/* Task Item Styles (Assuming you have task items) */
+.task-item {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
 }
 
-app-task-list .task-meta {
+.task-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Task Action Buttons */
+.task-actions {
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  font-size: 0.8rem;
-  color: #888;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.task-btn {
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.task-btn:hover {
+  background-color: var(--light-gray);
+}
+
+.task-btn.edit::before {
+  content: '\f044';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-right: 0.25rem;
+}
+
+.task-btn.delete::before {
+  content: '\f1f8';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-right: 0.25rem;
+  color: var(--accent-color);
+}
+
+.task-btn.view::before {
+  content: '\f06e';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-right: 0.25rem;
+  color: var(--secondary-color);
+}
+
+/* Priority Levels */
+.priority {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.priority.high {
+  background-color: #fef2f2;
+  color: #ef4444;
+}
+
+.priority.medium {
+  background-color: #fffbeb;
+  color: #f59e0b;
+}
+
+.priority.low {
+  background-color: #ecfdf5;
+  color: #10b981;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .task-management-app {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.task-item {
+  animation: fadeIn 0.5s ease-out;
 }
