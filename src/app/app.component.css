@@ -39,12 +39,11 @@ body {
   font-size: 2rem; 
   font-weight: 600; 
   color: var(--primary-color);
-  font-family: 'Poppins', sans-serif; 
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0;
-  transition: var(--transition);
   font-style: italic; 
+  transition: var(--transition);
 }
 
 .app-title:hover {
@@ -61,8 +60,8 @@ body {
   font-weight: 500;
   border-radius: 50px;
   cursor: pointer;
-  transition: var(--transition);
   box-shadow: var(--shadow);
+  transition: var(--transition);
 }
 
 .export-btn:hover {
@@ -154,7 +153,7 @@ section:hover .section-title::after {
   }
 
   .app-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .section-title {
