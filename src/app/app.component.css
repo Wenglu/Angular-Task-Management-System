@@ -1,8 +1,6 @@
-/* Importing Google Fonts for a sleek look */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
 
-/* Custom CSS Variables for easy theming */
 :root {
   --primary-color: #3498db;
   --secondary-color: #2ecc71;
@@ -15,7 +13,6 @@
   --transition: all 0.3s ease;
 }
 
-/* Global Styles */
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--background-color);
@@ -31,15 +28,14 @@ body {
   padding: 2rem;
 }
 
-/* Header Styles */
-header {
+.app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
 }
 
-h1 {
+.app-title {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--primary-color);
@@ -49,7 +45,7 @@ h1 {
   transition: var(--transition);
 }
 
-h1:hover {
+.app-title:hover {
   text-shadow: 2px 2px 4px rgba(52, 152, 219, 0.3);
   transform: translateY(-2px);
 }
@@ -80,22 +76,26 @@ h1:hover {
   margin-right: 0.5rem;
 }
 
-/* Main Content Styles */
-main {
+.app-main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 }
 
-/* Section Styles */
 section {
   background-color: var(--white);
-  border-radius: 10px;
+  border-radius: 16px;
   padding: 2rem;
-  box-shadow: var(--shadow);
+  box-shadow: 20px 40px 20px rgba(0, 0, 0, 0.08);
+  transition: var(--transition);
 }
 
-h2 {
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.section-title {
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--primary-color);
@@ -104,7 +104,7 @@ h2 {
   padding-bottom: 0.5rem;
 }
 
-h2::after {
+.section-title::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -115,22 +115,19 @@ h2::after {
   transition: var(--transition);
 }
 
-section:hover h2::after {
+section:hover .section-title::after {
   width: 100px;
 }
 
-/* Task Form Styles */
 .task-form-section {
   background-color: var(--light-gray);
 }
 
-/* Task List Styles */
 .task-list-section {
   max-height: 600px;
   overflow-y: auto;
 }
 
-/* Custom Scrollbar */
 .task-list-section::-webkit-scrollbar {
   width: 8px;
 }
@@ -145,94 +142,8 @@ section:hover h2::after {
   border-radius: 10px;
 }
 
-/* Task Item Styles (Assuming you have task items) */
-.task-item {
-  background-color: var(--white);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-}
-
-.task-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Task Action Buttons */
-.task-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
-}
-
-.task-btn {
-  border: none;
-  background-color: transparent;
-  color: var(--text-color);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: var(--transition);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-}
-
-.task-btn:hover {
-  background-color: var(--light-gray);
-}
-
-.task-btn.edit::before {
-  content: '\f044';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  margin-right: 0.25rem;
-}
-
-.task-btn.delete::before {
-  content: '\f1f8';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  margin-right: 0.25rem;
-  color: var(--accent-color);
-}
-
-.task-btn.view::before {
-  content: '\f06e';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  margin-right: 0.25rem;
-  color: var(--secondary-color);
-}
-
-/* Priority Levels */
-.priority {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.priority.high {
-  background-color: #fef2f2;
-  color: #ef4444;
-}
-
-.priority.medium {
-  background-color: #fffbeb;
-  color: #f59e0b;
-}
-
-.priority.low {
-  background-color: #ecfdf5;
-  color: #10b981;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-  main {
+  .app-main {
     grid-template-columns: 1fr;
   }
 
@@ -240,21 +151,11 @@ section:hover h2::after {
     padding: 1rem;
   }
 
-  h1 {
+  .app-title {
     font-size: 2rem;
   }
 
-  h2 {
+  .section-title {
     font-size: 1.5rem;
   }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.task-item {
-  animation: fadeIn 0.5s ease-out;
 }

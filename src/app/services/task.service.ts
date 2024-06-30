@@ -1,4 +1,3 @@
-// src/app/services/task.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Task } from '../models/task.model';
@@ -10,9 +9,11 @@ export class TaskService {
   private tasksSubject = new BehaviorSubject<Task[]>(this.loadTasks());
   tasks$ = this.tasksSubject.asObservable();
 
-  private tasks: Task[] = [];
+  private tasks: Task[];
 
-  constructor() {}
+  constructor() {
+    this.tasks = this.loadTasks();
+  }
 
   private loadTasks(): Task[] {
     const savedTasks = localStorage.getItem('tasks');

@@ -21,42 +21,44 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
   line-height: 1.6;
 }
 
 .task-form {
   max-width: 800px;
   width: 90%;
-  margin: 3rem auto;
-  background: linear-gradient(135deg, #ffffff 0%, #f3f3f3 100%);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px var(--shadow-color);
-  padding: 2.5rem;
+  margin: 1rem auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 20px 40px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
   transition: all 0.3s ease;
 }
 
 .task-form:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 40px var(--shadow-color);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
-
 h2 {
+  font-family:monospace;
   color: var(--primary-color);
   font-size: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
   position: relative;
+  padding-bottom: 0.5rem;
+  font-weight: 1000;
 }
 
 h2::after {
   content: '';
-  display: block;
-  width: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
   height: 3px;
   background-color: var(--accent-color);
-  margin: 0.5rem auto 0;
 }
 
 form {
@@ -86,8 +88,8 @@ input, select {
 
 input:focus, select:focus {
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+  border-color:#2d3436;
+  box-shadow: 0 0 0 3px rgba(21, 21, 22, 0.2);
 }
 
 select {
@@ -111,47 +113,50 @@ select {
   40%, 80% { transform: translateX(5px); }
 }
 
-button {
-  background-color: #f00804;
-  color: #eaeaea;
-  border: none;
-  padding: 1rem 1.5rem;
-  border-radius: 10px;
-  cursor: pointer;
+/* Default button style */
+button[type="submit"] {
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  margin-top: 1rem;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #6c5ce7;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
-button:not(:disabled) {
-  background-color:#1f8a07;
+/* Button hover effect */
+button[type="submit"]:hover {
+  background-color: #5a4cb1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
-button::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background-color: rgba(36, 30, 199, 0.2);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease;
+/* Button active effect */
+button[type="submit"]:active {
+  background-color: #473b91;
+  transform: translateY(0);
 }
 
-button:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-button:disabled {
+/* Disabled button style */
+button[type="submit"][disabled] {
+  background-color: #b2bec3;
   cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
+
+/* Valid form button style */
+button[type="submit"].valid {
+  background-color: #2ecc71;
+}
+
+/* Invalid form button style */
+button[type="submit"].invalid {
+  background-color: #e74c3c;
+}
+
 
 @media (max-width: 768px) {
   .task-form {
@@ -189,18 +194,18 @@ select[formControlName="priority"] option[value="high"] {
 }
 
 select[formControlName="priority"]:has(option[value="low"]:checked) {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%2327ae60'%3E%3Cpath d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%2327ae60'%3E%3Cpath d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9l17-17c9.4-9.4 24.6-9.4 33.9 0l39 39 96-96c9.4-9.4 24.6-9.4 33.9 0l17 17c9.4 9.4 9.4 24.6 0 33.9z'/%3E%3C/svg%3E"), 
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 select[formControlName="priority"]:has(option[value="medium"]:checked) {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23f39c12'%3E%3Cpath d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23f39c12'%3E%3Cpath d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9l17-17c9.4-9.4 24.6-9.4 33.9 0l39 39 96-96c9.4-9.4 24.6-9.4 33.9 0l17 17c9.4 9.4 9.4 24.6 0 33.9z'/%3E%3C/svg%3E"), 
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 select[formControlName="priority"]:has(option[value="high"]:checked) {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23e74c3c'%3E%3Cpath d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23e74c3c'%3E%3Cpath d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9l17-17c9.4-9.4 24.6-9.4 33.9 0l39 39 96-96c9.4-9.4 24.6-9.4 33.9 0l17 17c9.4 9.4 9.4 24.6 0 33.9z'/%3E%3C/svg%3E"), 
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 select[formControlName="status"] {
@@ -223,44 +228,17 @@ select[formControlName="status"] option[value="completed"] {
 }
 
 select[formControlName="status"]:has(option[value="to-do"]:checked) {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%233498db'%3E%3Cpath d='M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%233498db'%3E%3Cpath d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9l17-17c9.4-9.4 24.6-9.4 33.9 0l39 39 96-96c9.4-9.4 24.6-9.4 33.9 0l17 17c9.4 9.4 9.4 24.6 0 33.9z'/%3E%3C/svg%3E"), 
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 select[formControlName="status"]:has(option[value="in-progress"]:checked) {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23f1c40f'%3E%3Cpath d='M448 256A192 192 0 1 0 64 256a192 192 0 1 0 384 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 80a80 80 0 1 0 0-160 80 80 0 1 0 0 160zm0-224a144 144 0 1 1 0 288 144 144 0 1 1 0-288zM224 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23f1c40f'%3E%3Cpath d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9l17-17c9.4-9.4 24.6-9.4 33.9 0l39 39 96-96c9.4-9.4 24.6-9.4 33.9 0l17 17c9.4 9.4 9.4 24.6 0 33.9z'/%3E%3C/svg%3E"), 
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 select[formControlName="status"]:has(option[value="completed"]:checked) {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%232ecc71'%3E%3Cpath d='M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-}
-.floating-label {
-  position: relative;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%232ecc71'%3E%3Cpath d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9l17-17c9.4-9.4 24.6-9.4 33.9 0l39 39 96-96c9.4-9.4 24.6-9.4 33.9 0l17 17c9.4 9.4 9.4 24.6 0 33.9z'/%3E%3C/svg%3E"), 
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
-.floating-label input,
-.floating-label select {
-  height: 3.5rem;
-  padding-top: 1.5rem;
-}
-
-.floating-label label {
-  position: absolute;
-  top: 0.75rem;
-  left: 1rem;
-  transition: all 0.2s ease;
-  pointer-events: none;
-  font-size: 0.85rem;
-  color: #777;
-}
-
-.floating-label input:focus ~ label,
-.floating-label input:not(:placeholder-shown) ~ label,
-.floating-label select:focus ~ label,
-.floating-label select:not(:placeholder-shown) ~ label {
-  top: 0.5rem;
-  font-size: 0.75rem;
-  color: var(--primary-color);
-}
