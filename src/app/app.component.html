@@ -1,7 +1,10 @@
 <div class="task-management-app">
   <header class="app-header">
     <h1 class="app-title">{{ title }}</h1>
-    <button class="export-btn" (click)="exportTasks()">Export Tasks</button>
+    <button class="export-btn" (click)="exportTasks()">
+  <i class="fas fa-file-export"></i>
+  <span>Export Tasks</span>
+</button>
   </header>
   <main class="app-main">
     <section class="task-form-section">

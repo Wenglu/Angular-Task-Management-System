@@ -1,6 +1,6 @@
 <div class="task-detail">
   <h2>Task Details <i class="fa fa-tasks detail-icon"></i></h2>
-  <p><strong>Title:</strong> {{ data.title }} <i class="fa fa-heading title-icon"></i></p>
+  <p><strong>Title:</strong> {{ data.title }}</p>
   <p><strong>Description:</strong> {{ data.description }} <i class="fa fa-align-left description-icon"></i></p>
   <p><strong>Due Date:</strong> {{ data.dueDate | date:'shortDate' }} <i class="fa fa-calendar-alt due-date-icon"></i></p>
   <p><strong>Priority:</strong> <span [ngClass]="data.priority">{{ data.priority }}</span> <i class="fa fa-exclamation-triangle priority-icon"></i></p>

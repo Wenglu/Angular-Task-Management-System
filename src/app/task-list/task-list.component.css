@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-
 :root {
   --primary-color: #6c5ce7;
   --secondary-color: #00cec9;
@@ -23,7 +20,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.9;
 }
 
 .task-list {
@@ -82,27 +79,11 @@ li:hover {
 }
 
 li span {
-  font-weight: 600;
+  font-weight: 900;
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.85rem;
 }
-
-li span.low {
-  background-color: var(--low-priority);
-  color: #ffffff;
-}
-
-li span.medium {
-  background-color: var(--medium-priority);
-  color: #ffffff;
-}
-
-li span.high {
-  background-color: var(--high-priority);
-  color: #ffffff;
-}
-
 button {
   background-color: transparent;
   border: none;
@@ -111,24 +92,13 @@ button {
   padding: 0.5rem;
   border-radius: 50%;
   transition: all 0.3s ease;
+  font-size: 1.2rem;
 }
 
 button:hover {
   background-color: rgba(108, 92, 231, 0.1);
+  transform: scale(1.1);
 }
-
-.edit-icon {
-  color: var(--secondary-color);
-}
-
-.delete-icon {
-  color: var(--error-color);
-}
-
-.view-icon {
-  color: var(--primary-color);
-}
-
 @media (max-width: 768px) {
   .task-list {
     width: 95%;
@@ -148,9 +118,16 @@ button:hover {
     margin-bottom: 0.5rem;
   }
 
-  button {
-    margin-left: 0;
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
     margin-top: 0.5rem;
+  }
+
+  button {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
   }
 }
 
@@ -159,26 +136,42 @@ button:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.task-list {
-  animation: fadeIn 0.5s ease-out;
+.icon-container {
+  display: flex;
+  align-items: center;
 }
 
-.status-indicator {
-  width: 10px;
-  height: 10px;
+.icon-container button {
+  background-color: #f0f0f0;
   border-radius: 50%;
-  display: inline-block;
-  margin-right: 0.5rem;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 4px;
+  transition: all 0.3s ease;
 }
 
-.status-indicator.to-do {
-  background-color: var(--todo-status);
+.icon-container button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.status-indicator.in-progress {
-  background-color: var(--inprogress-status);
+.icon-container button i {
+  font-size: 1rem;
 }
 
-.status-indicator.completed {
-  background-color: var(--completed-status);
+.edit-icon {
+  color: #3498db; 
 }
+
+.delete-icon {
+  color: #e74c3c; 
+}
+
+.view-icon {
+  color: #2ecc71; 
+}
+
+

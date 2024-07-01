@@ -1,162 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
-
-:root {
-  --primary-color: #3498db;
-  --secondary-color: #2ecc71;
-  --accent-color: #e74c3c;
-  --background-color: #f5f7fa;
-  --text-color: #34495e;
-  --light-gray: #ecf0f1;
-  --white: #ffffff;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-}
-
-.task-management-app {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.app-title {
-  font-size: 2rem; 
-  font-weight: 600; 
-  color: var(--primary-color);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin: 0;
-  font-style: italic; 
-  transition: var(--transition);
-}
-
-.app-title:hover {
-  text-shadow: 2px 2px 4px rgba(52, 152, 219, 0.3);
-  transform: translateY(-2px);
-}
-
-.export-btn {
-  background-color: var(--secondary-color);
-  color: var(--white);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-}
-
-.export-btn:hover {
-  background-color: #27ae60;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-.export-btn::before {
-  content: '\f56e';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  margin-right: 0.5rem;
-}
-
-.app-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-section {
-  background-color: var(--white);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 20px 40px 20px rgba(0, 0, 0, 0.08);
-  transition: var(--transition);
-}
-
-section:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-}
-
 .section-title {
-  font-size: 1.8rem;
-  font-weight: 600;
+  font-family:monospace;
   color: var(--primary-color);
+  font-size: 2rem;
   margin-bottom: 1.5rem;
+  text-align: center;
   position: relative;
   padding-bottom: 0.5rem;
+  font-weight: 1000;
 }
 
 .section-title::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
   height: 3px;
-  background-color: var(--primary-color);
-  transition: var(--transition);
+  background-color: var(--accent-color);
 }
 
-section:hover .section-title::after {
-  width: 100px;
+.app-header {
+  background: linear-gradient(135deg, #eb8cf9, #2193b0);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.task-form-section {
-  background-color: var(--light-gray);
+.app-title {
+  font-size: 24px;
+  font-weight: 700;
 }
 
+.export-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.export-btn i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.export-btn:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.export-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.app-main {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  gap: 20px;
+}
+
+.task-form-section,
 .task-list-section {
-  max-height: 600px;
+  flex: 1;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: calc(100vh - 100px); /* Adjust height considering header height */
   overflow-y: auto;
 }
 
-.task-list-section::-webkit-scrollbar {
-  width: 8px;
+.task-form-section {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
 }
 
-.task-list-section::-webkit-scrollbar-track {
-  background-color: var(--light-gray);
-  border-radius: 10px;
-}
-
-.task-list-section::-webkit-scrollbar-thumb {
-  background-color: var(--primary-color);
-  border-radius: 10px;
-}
-
-@media (max-width: 768px) {
-  .app-main {
-    grid-template-columns: 1fr;
-  }
-
-  .task-management-app {
-    padding: 1rem;
-  }
-
-  .app-title {
-    font-size: 1.8rem;
-  }
-
-  .section-title {
-    font-size: 1.5rem;
-  }
+.task-list-section {
+  background: linear-gradient(135deg, #f5f7fa, #e2ebf0);
 }
