@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Task Management System Application is designed to enhance productivity and organization by providing a user-friendly interface for managing tasks. This application is built using the latest version of Angular and incorporates advanced features such as state management with ngrx store and data persistence using local storage. The application is responsive, ensuring a seamless user experience on both desktop and mobile devices.
+The Task Management System Application is designed to enhance productivity and organization by providing a user-friendly interface for managing tasks. This application is built using the latest version of Angular.
 ## Screen Shots
 
 ![Screenshot_1-7-2024_1389_angular-task-management-system-sigma vercel app](https://github.com/Mayank-Tiwari01/Angular-Task-Management-System/assets/103953234/28a11a33-8570-4b08-bc72-95ba58a20052)
@@ -38,7 +38,6 @@ The Task Management System Application is designed to enhance productivity and o
 
 ### Technology Stack
 - **Frontend**: Angular (latest version)
-- **State Management**: ngrx store
 - **Data Persistence**: Local storage
 
 ### Project Setup
