@@ -23,8 +23,7 @@ The Task Management System Application is designed to enhance productivity and o
 
 ### Task Display and Sorting
 - **List View**: Tasks are displayed in a list format for easy viewing.
-- **Sorting**: Users can sort tasks by due date, priority, or status to quickly find the tasks they need.
-
+- **Sorting**: Tasks are sorted: High > medium > low.
 ### Responsive Design
 - **Mobile and Desktop Support**: The application is fully responsive and works well on various screen sizes, providing a consistent user experience across devices.
 
