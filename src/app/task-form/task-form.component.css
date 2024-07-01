@@ -97,20 +97,6 @@ select {
   background-size: 1em;
 }
 
-.error-message {
-  color: var(--error-color);
-  font-size: 0.85rem;
-  margin-top: 0.25rem;
-  animation: shake 0.5s ease-in-out;
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-5px); }
-  40%, 80% { transform: translateX(5px); }
-}
-
-/* Default button style */
 button[type="submit"] {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -123,20 +109,18 @@ button[type="submit"] {
   transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
-/* Button hover effect */
+
 button[type="submit"]:hover {
   background-color: #5a4cb1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
 }
 
-/* Button active effect */
 button[type="submit"]:active {
   background-color: #473b91;
   transform: translateY(0);
 }
 
-/* Disabled button style */
 button[type="submit"][disabled] {
   background-color: #b2bec3;
   cursor: not-allowed;
@@ -144,12 +128,10 @@ button[type="submit"][disabled] {
   transform: none;
 }
 
-/* Valid form button style */
 button[type="submit"].valid {
   background-color: #2ecc71;
 }
 
-/* Invalid form button style */
 button[type="submit"].invalid {
   background-color: #e74c3c;
 }
