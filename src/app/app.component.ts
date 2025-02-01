@@ -12,7 +12,7 @@ import { Task } from './models/task.model';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Angular Task Management System';
+  title = 'TODO LIST';
   selectedTask?: Task;
 
   constructor(private taskService: TaskService) {}
